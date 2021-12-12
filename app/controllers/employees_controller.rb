@@ -4,6 +4,8 @@ class EmployeesController < ApplicationController
   # GET /employees or /employees.json
   def index
     @employees = Employee.all
+    @employees = @employees.search(params[:query]) if params[:query].present?
+    @pagy, @employees = pagy @employees.reorder(sort_column => sort_direction), items: params.fetch(:count, 10)
   end
 
   # GET /employees/1 or /employees/1.json
@@ -65,5 +67,13 @@ class EmployeesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def employee_params
       params.require(:employee).permit(:name, :position, :office, :age, :start_date)
+    end
+
+    def sort_column
+      %w[ name position office age start_date ].include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[ asc desc ].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
