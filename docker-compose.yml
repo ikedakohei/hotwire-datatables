@@ -1,0 +1,29 @@
+version: '3.8'
+
+volumes:
+  postgres_data: {}
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
+    tty: true
+    shm_size: 256m
+    volumes:
+      - type: bind
+        source: .
+        target: /hotwire-datatables
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13.5
+    environment:
+      POSTGRES_PASSWORD: postgres_password
+    volumes:
+      - type: volume
+        source: postgres_data
+        target: /var/lib/postgresql/data
