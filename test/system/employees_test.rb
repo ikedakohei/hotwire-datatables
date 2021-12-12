@@ -18,7 +18,7 @@ class EmployeesTest < ApplicationSystemTestCase
     fill_in "Name", with: @employee.name
     fill_in "Office", with: @employee.office
     fill_in "Position", with: @employee.position
-    fill_in "Starte date", with: @employee.starte_date
+    fill_in "Start date", with: @employee.start_date
     click_on "Create Employee"
 
     assert_text "Employee was successfully created"
@@ -33,7 +33,7 @@ class EmployeesTest < ApplicationSystemTestCase
     fill_in "Name", with: @employee.name
     fill_in "Office", with: @employee.office
     fill_in "Position", with: @employee.position
-    fill_in "Starte date", with: @employee.starte_date
+    fill_in "Start date", with: @employee.start_date
     click_on "Update Employee"
 
     assert_text "Employee was successfully updated"

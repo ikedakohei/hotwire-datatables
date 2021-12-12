@@ -5,7 +5,7 @@ class CreateEmployees < ActiveRecord::Migration[7.0]
       t.string :position
       t.string :office
       t.integer :age
-      t.date :starte_date
+      t.date :start_date
 
       t.timestamps
     end

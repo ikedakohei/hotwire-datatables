@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_12_12_184950) do
     t.string "position"
     t.string "office"
     t.integer "age"
-    t.date "starte_date"
+    t.date "start_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
